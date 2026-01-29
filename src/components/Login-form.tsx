@@ -7,7 +7,8 @@ import {
   FieldGroup,
   FieldLabel
 } from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
+import { Input } from "@/components/ui/input";
+import { Link } from 'react-router'
 export function LoginForm({
   className,
   ...props
@@ -17,18 +18,18 @@ export function LoginForm({
       <form>
         <FieldGroup>
           <div className="flex flex-col items-center gap-2 text-center">
-            <a
-              href="#"
+            <Link
+              to="#"
               className="flex flex-col items-center gap-2 font-medium"
             >
               <div className="flex size-8 items-center justify-center rounded-md">
                 <GalleryVerticalEnd className="size-6" />
               </div>
               <span className="sr-only">Acme Inc.</span>
-            </a>
+            </Link>
             <h1 className="text-xl font-bold">Welcome to Acme Inc.</h1>
             <FieldDescription>
-              Don&apos;t have an account? <a href="#">Sign up</a>
+              Don&apos;t have an account? <Link to="/sign-up">Sign up</Link>
             </FieldDescription>
           </div>
           <Field>
@@ -37,6 +38,14 @@ export function LoginForm({
               id="email"
               type="email"
               placeholder="m@example.com"
+              required
+            />
+          </Field>
+          <Field>
+            <FieldLabel htmlFor="password">Password</FieldLabel>
+            <Input
+              id="password"
+              type="password"
               required
             />
           </Field>

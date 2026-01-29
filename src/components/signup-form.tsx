@@ -7,7 +7,8 @@ import {
   FieldLabel,
   FieldSeparator,
 } from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
+import { Input } from "@/components/ui/input";
+import { Link } from 'react-router'
 export function SignupForm({
   className,
   ...props
@@ -43,7 +44,7 @@ export function SignupForm({
         <FieldSeparator>Or</FieldSeparator>
         <Field>
           <FieldDescription className="px-6 text-center">
-            Already have an account? <a href="#">Sign in</a>
+            Already have an account? <Link to="/log-in">Sign in</Link>
           </FieldDescription>
         </Field>
       </FieldGroup>
