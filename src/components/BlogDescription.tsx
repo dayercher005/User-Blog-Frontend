@@ -5,5 +5,6 @@ export function BlogDescription() {
       and comprehensive guides designed for beginners and pros alike.
         Whether you're looking to sharpen your skills or stay ahead of the curve, we’ve got you covered
     </h3>
+
   )
 }

@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
-import { Blog } from './Blog.tsx';
+import { BlogCard } from './BlogCard.tsx';
 import { SpinnerEmpty } from '@/components/SpinnerRequest.tsx';
 
 interface BlogPost {
     title: string;
-    date: string;
+    date: Date;
     author: string;
     duration: string;
 }
 
-export function Blogs(){
+export function BlogCards(){
 
     const [blogArray, setBlogArray] = useState<BlogPost[]>([]);
     const [loading, setLoading] = useState(true);
@@ -66,7 +66,7 @@ export function Blogs(){
     return(
         <div className="grid p-10 m-4">
             {blogArray.map((blog, index) => (
-                <Blog
+                <BlogCard
                     key={index}
                     title={blog.title}
                     date={blog.date}

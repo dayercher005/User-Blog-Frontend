@@ -10,19 +10,19 @@ import {
 } from "@/components/ui/card";
 import { Link } from 'react-router';
 
-interface BlogProps{
+interface BlogCardProps{
     title: string,
     date: Date,
     author: string,
     duration: string
 }
 
-export function Blog({
+export function BlogCard({
     title,
     date,
     author,
     duration
-}: BlogProps){
+}: BlogCardProps){
 
     const dateString = new Date(date)
 
