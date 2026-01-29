@@ -1,6 +1,6 @@
 import { NavigationBar } from '@/components/Navigation-bar';
 import { BlogDescription } from '@/components/BlogDescription.tsx';
-import { Blogs } from '@/components/Blogs.tsx';
+import { BlogCards } from '@/components/BlogCards.tsx';
 
 export default function HomePage() {
 
@@ -8,7 +8,7 @@ export default function HomePage() {
     <div className="">
       <NavigationBar />
       <BlogDescription />
-      <Blogs />
+      <BlogCards />
     </div>
   )
 }

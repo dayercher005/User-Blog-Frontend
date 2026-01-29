@@ -1,6 +1,6 @@
 import { GalleryVerticalEnd } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Field,
   FieldDescription,
@@ -8,14 +8,46 @@ import {
   FieldLabel
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input";
-import { Link } from 'react-router'
+import { Link } from 'react-router';
+import { useState } from 'react';
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const submitLoginForm = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch('https://localhost:8080/log-in', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({username: username, password: password}), // Convert data to a JSON string
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const result = await response.json();
+      return result;
+      
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+  
+
   return (
+
     <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <form>
+      
+      <form onSubmit={submitLoginForm} action="/log-in" method="POST">
         <FieldGroup>
           <div className="flex flex-col items-center gap-2 text-center">
             <Link
@@ -33,11 +65,13 @@ export function LoginForm({
             </FieldDescription>
           </div>
           <Field>
-            <FieldLabel htmlFor="email">Email</FieldLabel>
+            <FieldLabel htmlFor="username">Username</FieldLabel>
             <Input
-              id="email"
-              type="email"
+              id="username"
+              type="text"
               placeholder="m@example.com"
+              onChange={(event) => setUsername(event.target.value)}
+              value={username}
               required
             />
           </Field>
@@ -46,6 +80,8 @@ export function LoginForm({
             <Input
               id="password"
               type="password"
+              onChange={(event) => setPassword(event.target.value)}
+              value={password}
               required
             />
           </Field>
