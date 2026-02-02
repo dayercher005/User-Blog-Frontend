@@ -1,4 +1,4 @@
-import { SignupForm } from "@/components/Signup-form.tsx";
+import { SignupForm } from "@/components/Signup-form";
 import { ArrowLeftIcon } from "lucide-react";
 import { Button } from "@/components/ui/button.tsx";
 import { Link } from 'react-router';
