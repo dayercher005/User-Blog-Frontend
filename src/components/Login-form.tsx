@@ -22,12 +22,12 @@ export function LoginForm({
     event.preventDefault();
 
     try {
-      const response = await fetch('https://localhost:8080/log-in', {
+      const response = await fetch('http://localhost:8080/user/log-in', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({username: username, password: password}), // Convert data to a JSON string
+        body: JSON.stringify({username: username, password: password}),
       });
 
       if (!response.ok) {
@@ -35,7 +35,9 @@ export function LoginForm({
       }
 
       const result = await response.json();
-      return result;
+      
+      localStorage.setItem("token", result.token)
+
       
     } catch (error) {
       console.error('Error:', error);
@@ -47,7 +49,7 @@ export function LoginForm({
 
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       
-      <form onSubmit={submitLoginForm} action="/log-in" method="POST">
+      <form onSubmit={submitLoginForm} action="http://localhost:8080/user/log-in" method="POST">
         <FieldGroup>
           <div className="flex flex-col items-center gap-2 text-center">
             <Link

@@ -12,9 +12,9 @@ interface BlogPost {
 export function BlogCards(){
 
     const [blogArray, setBlogArray] = useState<BlogPost[]>([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState<boolean>(true);
 
-    const API = "http://localhost:8080";
+    const API = "http://localhost:8080/user";
 
     useEffect(() => {
 
@@ -37,7 +37,11 @@ export function BlogCards(){
                     const blogDuration = blogData.posts[index].duration;
 
                     if (!ignore){
-                        setBlogArray(array => [...array, {title: blogTitle, date: blogDate, author: blogContent, duration: blogDuration}])
+                        setBlogArray(array => [...array, 
+                            {title: blogTitle, 
+                             date: blogDate, 
+                             author: blogContent, 
+                             duration: blogDuration}])
                     }
                 }
 
