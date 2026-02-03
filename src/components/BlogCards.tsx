@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { BlogCard } from './BlogCard.tsx';
 import { SpinnerEmpty } from '@/components/SpinnerRequest.tsx';
+import { Link } from 'react-router';
 
 interface BlogPost {
     title: string;
+    id: string
     date: Date;
     author: string;
     duration: string;
@@ -31,16 +33,18 @@ export function BlogCards(){
                 const blogData = await response.json();
 
                 for(let index = 0; index < blogData.posts.length; index++){
+                    const blogID = blogData.posts[index].id
                     const blogTitle = blogData.posts[index].title
                     const blogDate = blogData.posts[index].date;
-                    const blogContent = blogData.posts[index].author;
+                    const blogAuthor = blogData.posts[index].authorUsername;
                     const blogDuration = blogData.posts[index].duration;
 
                     if (!ignore){
                         setBlogArray(array => [...array, 
-                            {title: blogTitle, 
+                            {title: blogTitle,
+                             id: blogID,
                              date: blogDate, 
-                             author: blogContent, 
+                             author: blogAuthor, 
                              duration: blogDuration}])
                     }
                 }
@@ -72,6 +76,7 @@ export function BlogCards(){
             {blogArray.map((blog, index) => (
                 <BlogCard
                     key={index}
+                    id={blog.id}
                     title={blog.title}
                     date={blog.date}
                     duration={blog.duration}

@@ -1,7 +1,5 @@
-import { Button } from "@/components/ui/button"
 import {
   Empty,
-  EmptyContent,
   EmptyDescription,
   EmptyHeader,
   EmptyMedia,
@@ -21,11 +19,6 @@ export function SpinnerEmpty() {
           Please wait while we process your request. Do not refresh the page.
         </EmptyDescription>
       </EmptyHeader>
-      <EmptyContent>
-        <Button variant="outline" size="sm">
-          Cancel
-        </Button>
-      </EmptyContent>
     </Empty>
   )
 }

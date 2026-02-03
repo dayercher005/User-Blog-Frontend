@@ -1,5 +1,5 @@
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardAction,
@@ -11,6 +11,7 @@ import {
 import { Link } from 'react-router';
 
 interface BlogCardProps{
+    id:string,
     title: string,
     date: Date,
     author: string,
@@ -18,6 +19,7 @@ interface BlogCardProps{
 }
 
 export function BlogCard({
+    id,
     title,
     date,
     author,
@@ -45,7 +47,7 @@ export function BlogCard({
         </CardDescription>
       </CardHeader>
       <CardFooter>
-        <Link to="" className="w-full">
+        <Link to={`/${id}`} className="w-full">
             <Button className="w-full">Read</Button>
         </Link>
       </CardFooter>
