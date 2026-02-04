@@ -1,4 +1,3 @@
-import { GalleryVerticalEnd } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button";
 import {
@@ -55,16 +54,7 @@ export function LoginForm({
       <form onSubmit={submitLoginForm} action="http://localhost:8080/user/log-in" method="POST">
         <FieldGroup>
           <div className="flex flex-col items-center gap-2 text-center">
-            <Link
-              to="#"
-              className="flex flex-col items-center gap-2 font-medium"
-            >
-              <div className="flex size-8 items-center justify-center rounded-md">
-                <GalleryVerticalEnd className="size-6" />
-              </div>
-              <span className="sr-only">Acme Inc.</span>
-            </Link>
-            <h1 className="text-xl font-bold">Welcome to Acme Inc.</h1>
+            <h1 className="text-xl font-bold">Welcome to PatchNote</h1>
             <FieldDescription>
               Don&apos;t have an account? <Link to="/sign-up">Sign up</Link>
             </FieldDescription>
@@ -74,7 +64,6 @@ export function LoginForm({
             <Input
               id="username"
               type="text"
-              placeholder="m@example.com"
               onChange={(event) => setUsername(event.target.value)}
               value={username}
               required
