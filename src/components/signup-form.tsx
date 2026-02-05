@@ -59,8 +59,7 @@ export function SignupForm({
           <FieldLabel htmlFor="username">Username</FieldLabel>
           <Input 
           id="username" 
-          type="text" 
-          placeholder="John Doe"
+          type="text"
           onChange={(event) => setUsername(event.target.value)}
           value={username}
           required />

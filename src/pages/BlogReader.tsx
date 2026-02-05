@@ -1,7 +1,12 @@
 import { useParams } from 'react-router';
 import { Blog } from '@/components/Blog.tsx';
 import { SpinnerEmpty } from '@/components/SpinnerRequest.tsx';
+import ToggleMode from '@/components/ToggleModeButton.tsx';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router';
+import { Button } from '@/components/ui/button.tsx';
+import { CommentForm } from '@/components/CommentForm.tsx';
+import { ArrowLeftIcon } from 'lucide-react';
 
 export function BlogReader(){
 
@@ -10,15 +15,16 @@ export function BlogReader(){
         duration: number,
         content: string,
         author: string,
-        date: string,
+        date: Date,
 
     }
 
     interface BlogCommentProps{
         content: string,
         username: string,
-        date: string
+        date: Date
     }
+
 
     const { blogID } = useParams();
 
@@ -27,7 +33,8 @@ export function BlogReader(){
     const [individualBlogDetails, setIndividualBlogDetails] = useState<IndividualBlogDetailsProps[]>([]);
     const [blogComments, setBlogComments] = useState<BlogCommentProps[]>([]);
 
-    const API = `http://localhost:8080/user/${blogID}`;
+
+    const API= `http://localhost:8080/user/${blogID}`;
     const token = localStorage.getItem("token");
 
     useEffect(() => {
@@ -45,6 +52,10 @@ export function BlogReader(){
 
                 const data = await response.json();
                 
+                if(data.user){
+                    setAuthenticationStatus(true);
+                }
+
                 const individualBlogData = data.post
                 const blogComments = data.comments.comments
 
@@ -84,14 +95,50 @@ export function BlogReader(){
         }
     }, [API, token])
 
+
     if (loading){
         return (
             <SpinnerEmpty />
         )
     }
 
+    if (authenticationStatus) return (
+        <div>
+            <div className="pt-10 mx-20 flex justify-between">
+                <Link className="inline-block" to="/">
+                    <Button variant="outline">
+                    <ArrowLeftIcon className="size-4" />
+                    </Button>
+                </Link>
+
+                <ToggleMode />
+            </div>
+            <Blog
+                title={individualBlogDetails[0].title}
+                duration={individualBlogDetails[0].duration}
+                content={individualBlogDetails[0].content}
+                author={individualBlogDetails[0].author}
+                date={individualBlogDetails[0].date}
+                comments={blogComments}
+            />
+
+            <CommentForm
+                blogID = { blogID }
+            />
+        </div>
+    )
+
     return (
         <div>
+            <div className="pt-10 mx-20 flex justify-between">
+                <Link className="inline-block" to="/">
+                    <Button variant="outline">
+                    <ArrowLeftIcon className="size-4" />
+                    </Button>
+                </Link>
+
+                <ToggleMode />
+            </div>
             <Blog
                 title={individualBlogDetails[0].title}
                 duration={individualBlogDetails[0].duration}
