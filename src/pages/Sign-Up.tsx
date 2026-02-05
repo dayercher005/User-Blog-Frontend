@@ -1,7 +1,8 @@
-import { SignupForm } from "@/components/Signup-form";
+import { SignupForm } from "@/components/Signup-Form";
 import { ArrowLeftIcon } from "lucide-react";
 import { Button } from "@/components/ui/button.tsx";
 import { Link } from 'react-router';
+
 export default function SignupPage() {
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
@@ -19,7 +20,7 @@ export default function SignupPage() {
           </div>
         </div>
       </div>
-      <div className="bg-muted relative hidden lg:block">
+      <div className="bg-muted flex justify-center items-center">
         
       </div>
     </div>

@@ -2,6 +2,7 @@ import { LoginForm } from "@/components/Login-form";
 import { Link } from 'react-router';
 import { Button } from '@/components/ui/button.tsx';
 import { ArrowLeftIcon } from "lucide-react";
+
 export default function LoginPage() {
   return (
 
@@ -20,7 +21,7 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
-
+      
     </div>
     
   )
