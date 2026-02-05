@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BlogCard } from './BlogCard.tsx';
 import { SpinnerEmpty } from '@/components/SpinnerRequest.tsx';
-import { Link } from 'react-router';
-
 interface BlogPost {
     title: string;
     id: string
@@ -72,7 +70,7 @@ export function BlogCards(){
     }
 
     return(
-        <div className="grid p-10 m-4">
+        <div className="grid grid-cols-3 p-10 m-4 gap-12">
             {blogArray.map((blog, index) => (
                 <BlogCard
                     key={index}
