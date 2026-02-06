@@ -1,13 +1,18 @@
 import { createBrowserRouter } from 'react-router';
-import HomePage from '../pages/Home.tsx';
+import Dashboard from '../pages/Dashboard.tsx';
 import { BlogReader } from '../pages/BlogReader.tsx';
 import LoginPage from '../pages/Log-In.tsx';
 import SignupPage from '../pages/Sign-Up.tsx';
+import { Homepage } from '../pages/Homepage.tsx';
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: <Homepage />
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
   {
     path: "/:blogID",
