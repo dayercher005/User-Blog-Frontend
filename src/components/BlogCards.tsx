@@ -14,7 +14,8 @@ export function BlogCards(){
     const [blogArray, setBlogArray] = useState<BlogPost[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
 
-    const API = "http://localhost:8080/user";
+    const API = "http://localhost:8080/user/dashboard";
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
 
@@ -22,7 +23,13 @@ export function BlogCards(){
 
         const fetchBlogDetails = async () => {
             try{
-                const response = await fetch(API);
+                const response = await fetch(API, {
+                    method: "GET",
+                    headers:{
+                        "Content-type": "application/json",
+                        Authorization: `Bearer ${token}`
+                    }
+                });
 
                 if (!response.ok){
                     throw new Error()
@@ -61,7 +68,7 @@ export function BlogCards(){
             ignore = true
         }
 
-    }, [])
+    }, [token])
 
     if(loading){
         return (

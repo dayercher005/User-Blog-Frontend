@@ -14,7 +14,6 @@ export function CommentForm({
 
     const [comment, setComment] = useState<string>('');
 
-    const token = localStorage.getItem("token");
     const API = `http://localhost:8080/user/${blogID}/comment`
 
     async function sendComment(event){
@@ -24,7 +23,6 @@ export function CommentForm({
                 method: 'POST',
                 headers:{
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`
                 },
                 body: JSON.stringify({ content: comment })
             })

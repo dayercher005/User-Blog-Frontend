@@ -32,8 +32,8 @@ export function BlogCard({
     return (
     <Card className="bg-neutral-300 dark:bg-neutral-700 relative mx-auto w-full max-w-sm px-1 pt-0.5">
       
-      <img
-        className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40 p-1"
+      <img src="/src/assets/blogCardImage.jpg"
+        className="relative z-20 aspect-video w-full object-cover p-1.5 rounded-xl"
       />
       <CardHeader>
         <CardAction>

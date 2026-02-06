@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button.tsx";
 import { Sun, Moon } from "lucide-react";
-import { useTheme } from '@/components/Theme-Provider.tsx';
+import { useTheme } from '@/context/Theme.ts';
 
 export default function ToggleMode(){
 

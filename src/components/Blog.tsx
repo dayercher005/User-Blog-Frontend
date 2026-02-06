@@ -45,14 +45,14 @@ export function Blog({
                         Published on {dateString.toLocaleDateString()}
                     </Badge>
                 </div>
-                <div className="mx-auto my-10 w-7/10">
+                <div className="mx-auto my-10 w-6/10">
                     {renderedContent}
                 </div>
             </div>
 
             <div>
                 <span className="text-2xl font-semibold underline ml-35">Comments Section</span>
-                {comments.map((comment, index) => (
+                {comments.map((comment) => (
                     <Comment 
                         key={comment.id}
                         username={comment.username}

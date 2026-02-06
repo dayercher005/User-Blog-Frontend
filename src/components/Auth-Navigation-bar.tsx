@@ -1,5 +1,3 @@
-"use client"
-
 import {
   Button
 } from "@/components/ui/button";
@@ -7,30 +5,30 @@ import ToggleMode from '@/components/ToggleModeButton.tsx';
 import { Link } from 'react-router';
 
 
-export function NavigationBar() {
+export function AuthenticatedNavigationBar() {
 
   return (
     <div className="flex justify-between items-center px-7 py-3">
-        <h1 className="text-xl font-bold">PatchNote</h1>
+        <Link to="/">
+            <h1 className="text-xl font-bold">PatchNote</h1>
+        </Link>
 
         <div className="flex items-center">
 
             <ToggleMode />
 
-            <Link to="/log-in">
+            <Link to="/dashboard">
                 <Button size="lg" className="bg-neutral-700 m-1.5 p-3 text-md hover:bg-neutral-800 transition">
-                    Log In
+                    Dashboard
+                </Button>
+            </Link>
+            <Link to="/">
+                <Button size="lg" className="bg-neutral-700 m-1.5 p-3 text-md hover:bg-neutral-800 transition">
+                    Log Out
                 </Button>
             </Link>
 
-            <Link to="/sign-up">
-                <Button size="lg" className="m-1.5 p-3 text-md hover:bg-gray-200 transition" variant="outline">
-                    Sign Up
-                </Button>
-            </Link>
         </div>
     </div>
   )
 }
-
-

@@ -7,15 +7,16 @@ import {
   FieldLabel
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input";
-import { Link } from 'react-router';
+import { Link, redirect } from 'react-router';
 import { useState } from 'react';
+
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   const submitLoginForm = async (event) => {
     event.preventDefault();
@@ -34,12 +35,12 @@ export function LoginForm({
       }
 
       const result = await response.json();
+
       if (result){
         localStorage.clear();
-        localStorage.setItem("token", result.token)
+        localStorage.setItem("token", result.token);
+        redirect("http://localhost:5173/dashboard");
       }
-      
-
       
     } catch (error) {
       console.error('Error:', error);
@@ -48,43 +49,42 @@ export function LoginForm({
   
 
   return (
-
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
-      
-      <form onSubmit={submitLoginForm} action="http://localhost:8080/user/log-in" method="POST">
-        <FieldGroup>
-          <div className="flex flex-col items-center gap-2 text-center">
-            <h1 className="text-xl font-bold">Welcome to PatchNote</h1>
-            <FieldDescription>
-              Don&apos;t have an account? <Link to="/sign-up">Sign up</Link>
-            </FieldDescription>
-          </div>
-          <Field>
-            <FieldLabel htmlFor="username">Username</FieldLabel>
-            <Input
-              id="username"
-              type="text"
-              onChange={(event) => setUsername(event.target.value)}
-              value={username}
-              required
-            />
-          </Field>
-          <Field>
-            <FieldLabel htmlFor="password">Password</FieldLabel>
-            <Input
-              id="password"
-              type="password"
-              onChange={(event) => setPassword(event.target.value)}
-              value={password}
-              required
-            />
-          </Field>
-          <Field>
-            <Button type="submit">Login</Button>
-          </Field>
-        </FieldGroup>
-      </form>
-    </div>
+      <div className={cn("flex flex-col gap-6", className)} {...props}>
+        
+        <form onSubmit={submitLoginForm} action="http://localhost:8080/user/log-in" method="POST">
+          <FieldGroup>
+            <div className="flex flex-col items-center gap-2 text-center">
+              <h1 className="text-xl font-bold">Welcome to PatchNote</h1>
+              <FieldDescription>
+                Don&apos;t have an account? <Link to="/sign-up">Sign up</Link>
+              </FieldDescription>
+            </div>
+            <Field>
+              <FieldLabel htmlFor="username">Username</FieldLabel>
+              <Input
+                id="username"
+                type="text"
+                onChange={(event) => setUsername(event.target.value)}
+                value={username}
+                required
+              />
+            </Field>
+            <Field>
+              <FieldLabel htmlFor="password">Password</FieldLabel>
+              <Input
+                id="password"
+                type="password"
+                onChange={(event) => setPassword(event.target.value)}
+                value={password}
+                required
+              />
+            </Field>
+            <Field>
+              <Button type="submit">Login</Button>
+            </Field>
+          </FieldGroup>
+        </form>
+      </div>
   )
 }
 
