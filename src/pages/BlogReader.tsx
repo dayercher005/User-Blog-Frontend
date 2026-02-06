@@ -29,10 +29,8 @@ export function BlogReader(){
     const { blogID } = useParams();
 
     const [loading, setLoading] = useState<boolean>(true);
-    const [authenticationStatus, setAuthenticationStatus] = useState<boolean>(false);
     const [individualBlogDetails, setIndividualBlogDetails] = useState<IndividualBlogDetailsProps[]>([]);
     const [blogComments, setBlogComments] = useState<BlogCommentProps[]>([]);
-
 
     const API= `http://localhost:8080/user/${blogID}`;
     const token = localStorage.getItem("token");
@@ -45,19 +43,16 @@ export function BlogReader(){
             try{
                 const response = await fetch(API, {
                     method: "GET",
-                    headers:{
+                    headers: {
+                        "Content-type": "application/json",
                         Authorization: `Bearer ${token}`
                     }
                 });
 
                 const data = await response.json();
-                
-                if(data.user){
-                    setAuthenticationStatus(true);
-                }
-
                 const individualBlogData = data.post
                 const blogComments = data.comments.comments
+
 
                 setIndividualBlogDetails(array => [...array, 
                     {title: individualBlogData.title,
@@ -79,8 +74,8 @@ export function BlogReader(){
                             username: commentUsername
                             }])
                     }
-                    
                 }
+
             } catch (error){
                 return error
             } finally {
@@ -102,36 +97,10 @@ export function BlogReader(){
         )
     }
 
-    if (authenticationStatus) return (
-        <div>
-            <div className="pt-10 mx-20 flex justify-between">
-                <Link className="inline-block" to="/">
-                    <Button variant="outline">
-                    <ArrowLeftIcon className="size-4" />
-                    </Button>
-                </Link>
-
-                <ToggleMode />
-            </div>
-            <Blog
-                title={individualBlogDetails[0].title}
-                duration={individualBlogDetails[0].duration}
-                content={individualBlogDetails[0].content}
-                author={individualBlogDetails[0].author}
-                date={individualBlogDetails[0].date}
-                comments={blogComments}
-            />
-
-            <CommentForm
-                blogID = { blogID }
-            />
-        </div>
-    )
-
     return (
         <div>
             <div className="pt-10 mx-20 flex justify-between">
-                <Link className="inline-block" to="/">
+                <Link className="inline-block" to="/dashboard">
                     <Button variant="outline">
                     <ArrowLeftIcon className="size-4" />
                     </Button>
@@ -146,6 +115,9 @@ export function BlogReader(){
                 author={individualBlogDetails[0].author}
                 date={individualBlogDetails[0].date}
                 comments={blogComments}
+            />
+            <CommentForm
+                blogID = { blogID }
             />
         </div>
     )
