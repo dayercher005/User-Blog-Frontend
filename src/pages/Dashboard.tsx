@@ -26,8 +26,10 @@ export default function Dashboard() {
 
                 const verification = await response.json();
 
-                if (verification){
+                if (!ignore){
+                  if (verification){
                     setStatus(true);
+                  }
                 }
 
             } catch(error){

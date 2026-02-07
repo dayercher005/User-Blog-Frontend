@@ -24,8 +24,10 @@ export function Homepage(){
 
                 const verification = await response.json();
 
-                if (verification){
-                    setStatus(true);
+                if (!ignore){
+                    if (verification){
+                        setStatus(true);
+                    }
                 }
 
             } catch(error){
