@@ -3,10 +3,12 @@ import { AuthenticatedNavigationBar } from '@/components/Auth-Navigation-bar';
 import { DashboardDescription } from '@/components/DashboardDescription';
 import { BlogCards } from '@/components/BlogCards.tsx';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 
 export default function Dashboard() {
 
   const [status, setStatus] = useState<boolean>(false);
+  const navigate = useNavigate();
 
     const API = "http://localhost:8080/user";
     const token = localStorage.getItem("token")
@@ -22,11 +24,16 @@ export default function Dashboard() {
                     headers:{
                         Authorization: `Bearer ${token}`
                     }
-                })
-
-                const verification = await response.json();
+                })                
 
                 if (!ignore){
+
+                  if(response.status === 401){
+                    navigate("/");
+                  }
+
+                  const verification = await response.json();
+
                   if (verification){
                     setStatus(true);
                   }

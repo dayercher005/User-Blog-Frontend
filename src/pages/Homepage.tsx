@@ -1,6 +1,7 @@
 import { UnauthenticatedNavigationBar } from '@/components/Unauth-Navigation-bar.tsx';
 import { AuthenticatedNavigationBar } from '@/components/Auth-Navigation-bar.tsx';
 import { useState, useEffect } from 'react';
+import { HomepageContent } from '@/components/HomepageContent.tsx';
 
 export function Homepage(){
 
@@ -47,12 +48,14 @@ export function Homepage(){
     if (status) return (
         <div>
             <AuthenticatedNavigationBar />
+            <HomepageContent />
         </div>
     )
 
     return (
         <div>
             <UnauthenticatedNavigationBar />
+            <HomepageContent />
         </div>
     )
 }
