@@ -12,7 +12,7 @@ export function UnauthenticatedNavigationBar() {
   return (
     <div className="flex justify-between items-center px-7 py-3">
         <Link to="/">
-            <h1 className="text-xl font-bold">PatchNote</h1>
+            <h1 className="text-2xl font-bold">PatchNote</h1>
         </Link>
 
         <div className="flex items-center">
