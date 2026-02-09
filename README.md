@@ -11,30 +11,42 @@
 ├── README.md
 ├── src
 │   ├── assets
+│   │   ├── authentication.svg
+│   │   ├── blogCardImage.jpg
+│   │   ├── global.svg
+│   │   ├── NotFound.svg
+│   │   └── viewBlog.svg
 │   ├── components
 │   │   ├── AccordionQueries.tsx
+│   │   ├── AnimateScroll.tsx
 │   │   ├── Auth-Navigation-bar.tsx
 │   │   ├── Blog.tsx
 │   │   ├── BlogCard.tsx
 │   │   ├── BlogCards.tsx
 │   │   ├── Comment.tsx
 │   │   ├── CommentForm.tsx
-│   │   ├── HomeDescription.tsx
+│   │   ├── DashboardDescription.tsx
+│   │   ├── HomepageContent.tsx
 │   │   ├── Login-form.tsx
-│   │   ├── Signup-Form.tsx
+│   │   ├── Signup-form.tsx
 │   │   ├── SpinnerRequest.tsx
 │   │   ├── Theme-Provider.tsx
 │   │   ├── ToggleModeButton.tsx
 │   │   └── Unauth-Navigation-bar.tsx
+│   ├── context
+│   │   └── Theme.ts
 │   ├── hooks
+│   │   ├── scroll-Animation.ts
 │   │   └── use-mobile.ts
 │   ├── lib
 │   │   └── utils.ts
 │   ├── pages
 │   │   ├── App.tsx
 │   │   ├── BlogReader.tsx
-│   │   ├── Home.tsx
+│   │   ├── Dashboard.tsx
+│   │   ├── Homepage.tsx
 │   │   ├── Log-In.tsx
+│   │   ├── NotFound.tsx
 │   │   └── Sign-Up.tsx
 │   ├── routes
 │   │   └── routes.tsx
