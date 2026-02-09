@@ -3,7 +3,7 @@ import { Blog } from '@/components/Blog.tsx';
 import { SpinnerEmpty } from '@/components/SpinnerRequest.tsx';
 import ToggleMode from '@/components/ToggleModeButton.tsx';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { Button } from '@/components/ui/button.tsx';
 import { CommentForm } from '@/components/CommentForm.tsx';
 import { ArrowLeftIcon } from 'lucide-react';
@@ -28,6 +28,8 @@ export function BlogReader(){
 
     const { blogID } = useParams();
 
+    const navigate = useNavigate();
+
     const [loading, setLoading] = useState<boolean>(true);
     const [individualBlogDetails, setIndividualBlogDetails] = useState<IndividualBlogDetailsProps[]>([]);
     const [blogComments, setBlogComments] = useState<BlogCommentProps[]>([]);
@@ -48,8 +50,13 @@ export function BlogReader(){
                         Authorization: `Bearer ${token}`
                     }
                 });
+                
+                if (response.status === 401){
+                    navigate("/")
+                }
 
                 const data = await response.json();
+
                 const individualBlogData = data.post
                 const blogComments = data.comments.comments
 
@@ -88,7 +95,8 @@ export function BlogReader(){
         return () => {
             ignore = true
         }
-    }, [API, token])
+    }, [API, token, navigate])
+
 
 
     if (loading){

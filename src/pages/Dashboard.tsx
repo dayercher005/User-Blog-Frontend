@@ -50,7 +50,7 @@ export default function Dashboard() {
             ignore = true
         }
         
-    }, [token]);
+    }, [token, navigate]);
 
     if (status) return(
       <div className="">
