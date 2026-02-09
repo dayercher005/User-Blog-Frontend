@@ -2,8 +2,11 @@ import { UnauthenticatedNavigationBar } from '@/components/Unauth-Navigation-bar
 import { AuthenticatedNavigationBar } from '@/components/Auth-Navigation-bar.tsx';
 import { useState, useEffect } from 'react';
 import { HomepageContent } from '@/components/HomepageContent.tsx';
+import { useNavigate } from 'react-router';
 
 export function Homepage(){
+
+    const navigate = useNavigate();
 
     const [status, setStatus] = useState<boolean>(false);
 
@@ -22,6 +25,10 @@ export function Homepage(){
                         Authorization: `Bearer ${token}`
                     }
                 })
+
+                if (response.status === 404){
+                    navigate("*");
+                }
 
                 const verification = await response.json();
 
