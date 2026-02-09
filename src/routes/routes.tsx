@@ -4,6 +4,7 @@ import { BlogReader } from '../pages/BlogReader.tsx';
 import LoginPage from '../pages/Log-In.tsx';
 import SignupPage from '../pages/Sign-Up.tsx';
 import { Homepage } from '../pages/Homepage.tsx';
+import { NotFound } from '@/pages/NotFound.tsx';
 
 export const router = createBrowserRouter([
   {
@@ -25,5 +26,9 @@ export const router = createBrowserRouter([
   {
     path: "/sign-up",
     element: <SignupPage />
+  },
+  {
+    path: "*",
+    element: <NotFound />
   }
 ]);
