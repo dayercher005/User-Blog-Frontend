@@ -80,7 +80,7 @@ export function BlogCards(){
     return(
         <div className="grid grid-cols-3 p-10 m-4 gap-12">
             {blogArray.map((blog, index) => (
-                <RiseUp delay={ index * 100 }>
+                <RiseUp delay={ ((index + 3) % 3) * 120 }>
                     <BlogCard
                         key={index}
                         id={blog.id}

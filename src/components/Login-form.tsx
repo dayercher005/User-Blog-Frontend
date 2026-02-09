@@ -7,7 +7,7 @@ import {
   FieldLabel
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input";
-import { Link, redirect } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { useState } from 'react';
 
 export function LoginForm({
@@ -17,6 +17,8 @@ export function LoginForm({
 
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
+  const navigate = useNavigate();
 
   const submitLoginForm = async (event) => {
     event.preventDefault();
@@ -39,7 +41,7 @@ export function LoginForm({
       if (result){
         localStorage.clear();
         localStorage.setItem("token", result.token);
-        redirect("http://localhost:5173/dashboard");
+        navigate("/dashboard");
       }
       
     } catch (error) {

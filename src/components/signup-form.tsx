@@ -8,7 +8,7 @@ import {
   FieldSeparator,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input";
-import { Link, redirect } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { useState } from 'react';
 
 export function SignupForm({
@@ -19,6 +19,8 @@ export function SignupForm({
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+  const navigate = useNavigate();
 
   const submitSignupForm = async (event) => {
 
@@ -38,7 +40,7 @@ export function SignupForm({
       }
 
       const result = response.json();
-      redirect("http://localhost:5173/log-in");
+      navigate("/log-in");
       return result
       
     } catch(error){
