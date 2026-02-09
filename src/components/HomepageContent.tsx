@@ -46,7 +46,7 @@ export function HomepageContent(){
             </FadeIn>
 
             <FadeIn>
-                <div id="Global" className="flex justify-evenly py-30">
+                <div id="Global" className="flex justify-evenly py-40">
                     <div className="max-w-lg">
                         <h1 className="font-extrabold text-2xl text-center p-5">A <span className="text-slate-900 underline dark:text-blue-500">Global</span> Perspective, <span className="text-slate-900 underline dark:text-blue-500">Locally</span> felt.</h1>
                         <p className="py-2 px-5 text-md font-semibold"> Great ideas don't need a passport. We've built a pervasive digital home 

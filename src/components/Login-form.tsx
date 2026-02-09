@@ -39,7 +39,6 @@ export function LoginForm({
       const result = await response.json();
 
       if (result){
-        localStorage.clear();
         localStorage.setItem("token", result.token);
         navigate("/dashboard");
       }

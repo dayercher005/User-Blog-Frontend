@@ -2,10 +2,17 @@ import {
   Button
 } from "@/components/ui/button";
 import ToggleMode from '@/components/ToggleModeButton.tsx';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 
 export function AuthenticatedNavigationBar() {
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        navigate("/");
+    }
 
   return (
     <div className="flex justify-between items-center px-7 py-3">
@@ -22,11 +29,11 @@ export function AuthenticatedNavigationBar() {
                     Dashboard
                 </Button>
             </Link>
-            <Link to="/">
-                <Button size="lg" className="bg-neutral-700 m-1.5 p-3 text-md hover:bg-neutral-800 transition">
-                    Log Out
-                </Button>
-            </Link>
+            
+            <Button onClick={handleLogout} size="lg" className="bg-neutral-700 m-1.5 p-3 text-md hover:bg-neutral-800 transition">
+                Log Out
+            </Button>
+            
 
         </div>
     </div>
