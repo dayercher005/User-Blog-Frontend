@@ -15,6 +15,7 @@ export default defineConfig({
     setupFiles: './src/tests/setup.ts',
   },
   resolve: {
+    dedupe: ['react-router', 'react-router-dom'],
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
