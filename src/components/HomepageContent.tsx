@@ -14,7 +14,7 @@ export function HomepageContent(){
                             join the conversation with verified comments, and gain access to trending open source content straight
                             to your dashboard. Your data stays yours; your experience becomes ours.</p>
                     </div>
-                    <img className="size-85" src="./public/viewBlog.svg"></img>
+                    <img className="size-85" src="/viewBlog.svg"></img>
                 </div>
             </RiseUp>
 
@@ -28,7 +28,7 @@ export function HomepageContent(){
 
             <RiseUp>
                 <div id="Authenticate" className="flex justify-evenly py-20">
-                    <img className="size-85" src="public/authentication.svg"></img>
+                    <img className="size-85" src="/authentication.svg"></img>
                     <div className="max-w-lg">
                         <h1 className="font-bold text-2xl text-center p-5">Your <span className="text-pink-500 dark:text-blue-500">Privacy</span> hardened.</h1>
                         <p className="py-1.2 px-5 font-semibold"> We take your digital footprint seriously. Our authentication system includes
@@ -53,7 +53,7 @@ export function HomepageContent(){
                             for thinkers worldwide, ensuring wherever you are, you have a front-row seat in the conversation. Join a 
                             truly international community where the sun never sets on the latest story.</p>
                     </div>
-                    <img className="size-85" src="/public/global.svg"></img>
+                    <img className="size-85" src="/global.svg"></img>
                 </div>
             </FadeIn>
         </div>
