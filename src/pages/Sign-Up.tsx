@@ -1,4 +1,4 @@
-import { SignupForm } from '../components/signup-form.tsx';
+import { SignupForm } from '@/components/signup-form.tsx';
 import { AccordionQueries } from "@/components/AccordionQueries.tsx";
 import { ArrowLeftIcon } from "lucide-react";
 import { Button } from "@/components/ui/button.tsx";
