@@ -15,7 +15,7 @@ export function BlogCards(){
     const [blogArray, setBlogArray] = useState<BlogPost[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
 
-    const API = "http://localhost:8080/user/dashboard";
+    const API = "https://blog-api-backend-h85d.onrender.com/user/dashboard";
     const token = localStorage.getItem("token");
 
     useEffect(() => {

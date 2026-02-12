@@ -22,7 +22,7 @@ export function SignupForm({
 
   const navigate = useNavigate();
 
-  const submitSignupForm = async (event) => {
+  const submitSignupForm = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
 
     event.preventDefault();
 
@@ -49,7 +49,7 @@ export function SignupForm({
   }
 
   return (
-    <form onSubmit={submitSignupForm} action="http://localhost:8080/user/sign-up" method="POST" className={cn("flex flex-col gap-6", className)} {...props}>
+    <form onSubmit={submitSignupForm} action="https://blog-api-backend-h85d.onrender.com/user/sign-up" method="POST" className={cn("flex flex-col gap-6", className)} {...props}>
       <FieldGroup>
         <div className="flex flex-col items-center gap-1 text-center">
           <h1 className="text-2xl font-bold">Create your PatchNote User account</h1>

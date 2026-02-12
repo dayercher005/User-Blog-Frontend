@@ -16,10 +16,10 @@ export function CommentForm({
 
     const [comment, setComment] = useState<string>('');
 
-    const API = `http://localhost:8080/user/${blogID}/comment`;
+    const API = `https://blog-api-backend-h85d.onrender.com/user/${blogID}/comment`;
     const token = localStorage.getItem("token");
 
-    async function sendComment(event){
+    async function sendComment(event: React.FormEvent<HTMLFormElement>): Promise<void> {
         event.preventDefault();
         try{
             const response = await fetch(API,{
@@ -38,7 +38,7 @@ export function CommentForm({
             navigate("/dashboard")
             
         } catch(error){
-            return error
+            console.error(error);
         }
     }
 

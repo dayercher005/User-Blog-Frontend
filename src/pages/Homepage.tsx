@@ -10,7 +10,7 @@ export function Homepage(){
 
     const [status, setStatus] = useState<boolean>(false);
 
-    const API = "http://localhost:8080/user";
+    const API = "https://blog-api-backend-h85d.onrender.com/user";
     const token = localStorage.getItem("token")
 
     useEffect(() => {
