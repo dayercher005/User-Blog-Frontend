@@ -2,7 +2,7 @@ import { FieldLabel, Field, FieldDescription } from '@/components/ui/field.tsx';
 import { Textarea } from '@/components/ui/textarea.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { useState } from 'react';
-import { redirect } from 'react-router';
+import { useNavigate } from 'react-router';
 
 interface CommentFormProps{
     blogID: string | undefined
@@ -12,9 +12,12 @@ export function CommentForm({
     blogID
 }: CommentFormProps){
 
+    const navigate = useNavigate();
+
     const [comment, setComment] = useState<string>('');
 
-    const API = `http://localhost:8080/user/${blogID}/comment`
+    const API = `http://localhost:8080/user/${blogID}/comment`;
+    const token = localStorage.getItem("token");
 
     async function sendComment(event){
         event.preventDefault();
@@ -23,6 +26,7 @@ export function CommentForm({
                 method: 'POST',
                 headers:{
                     'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`
                 },
                 body: JSON.stringify({ content: comment })
             })
@@ -31,10 +35,8 @@ export function CommentForm({
                 throw new Error("Error")
             }
 
-            const data = await response.json();
-            redirect(`http://localhost:5173/${blogID}`)
-            return data
-
+            navigate("/dashboard")
+            
         } catch(error){
             return error
         }
