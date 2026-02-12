@@ -28,8 +28,8 @@ export default function Dashboard() {
 
                 if (!ignore){
 
-                  if(response.status === 404){
-                    navigate("*");
+                  if(response.status === 404 || response.status === 401){
+                    navigate("/error");
                   }
 
                   const verification = await response.json();

@@ -1,9 +1,8 @@
-import { useParams } from 'react-router';
 import { Blog } from '@/components/Blog.tsx';
 import { SpinnerEmpty } from '@/components/SpinnerRequest.tsx';
 import ToggleMode from '@/components/ToggleModeButton.tsx';
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link, useNavigate, useParams } from 'react-router';
 import { Button } from '@/components/ui/button.tsx';
 import { CommentForm } from '@/components/CommentForm.tsx';
 import { ArrowLeftIcon } from 'lucide-react';
@@ -16,13 +15,13 @@ export function BlogReader(){
         content: string,
         author: string,
         date: Date,
-
     }
 
     interface BlogCommentProps{
         content: string,
         username: string,
-        date: Date
+        date: Date,
+        id: string
     }
 
 
@@ -52,7 +51,7 @@ export function BlogReader(){
                 });
                 
                 if (response.status === 401){
-                    navigate("/")
+                    navigate("/error")
                 }
 
                 const data = await response.json();
@@ -60,26 +59,31 @@ export function BlogReader(){
                 const individualBlogData = data.post
                 const blogComments = data.comments.comments
 
-
+                
                 setIndividualBlogDetails(array => [...array, 
                     {title: individualBlogData.title,
                      duration: individualBlogData.duration, 
                      content: individualBlogData.content, 
                      author: individualBlogData.authorUsername,
-                     date: individualBlogData.date}])
+                     date: individualBlogData.date}]);
+
 
                 for(let index = 0; index < blogComments.length; index++){
 
                     const commentContent = blogComments[index].content;
                     const commentDate = blogComments[index].date;
                     const commentUsername = blogComments[index].userUsername;
+                    const commentID = blogComments[index].id;
 
+                    console.log(blogComments);
                     if (!ignore){
                         setBlogComments(array => [...array,
                             {content: commentContent,
                             date: commentDate,
-                            username: commentUsername
+                            username: commentUsername,
+                            id: commentID
                             }])
+                        console.log(blogComments);
                     }
                 }
 

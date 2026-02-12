@@ -27,7 +27,7 @@ export function Homepage(){
                 })
 
                 if (response.status === 404){
-                    navigate("*");
+                    navigate("/error");
                 }
 
                 const verification = await response.json();
@@ -49,7 +49,7 @@ export function Homepage(){
             ignore = true
         }
         
-    }, [token]);
+    }, [token, navigate]);
 
 
     if (status) return (
