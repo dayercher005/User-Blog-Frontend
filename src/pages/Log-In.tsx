@@ -12,7 +12,12 @@ export default function LoginPage() {
   useEffect(() => {
 
     const renderSignupForm = async () => {
-        const response = await fetch(API);
+        const response = await fetch(API, {
+          method: "GET",
+          headers:{
+            "Content-type": "application/json"
+          }
+        });
 
         if (!response.ok){
             throw new Error("error");
