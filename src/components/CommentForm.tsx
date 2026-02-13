@@ -46,7 +46,7 @@ export function CommentForm({
     return(
 
         <div className="mx-auto max-w-md">
-            <form onSubmit={sendComment} action={`http://localhost:8080/user/${blogID}/comment`} method="POST">
+            <form onSubmit={sendComment} action={`https://blog-api-backend-h85d.onrender.com/user/${blogID}/comment`} method="POST">
                 <Field>
                     <FieldLabel htmlFor="content">Comment</FieldLabel>
                     <FieldDescription>Add your comment here</FieldDescription>
