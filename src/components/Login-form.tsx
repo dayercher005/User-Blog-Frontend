@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input";
 import { Link, useNavigate } from 'react-router';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export function LoginForm({
   className,
@@ -21,23 +21,6 @@ export function LoginForm({
   const API = "https://blog-api-backend-h85d.onrender.com/user/log-in"
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-
-    const renderLoginForm = async () => {
-      const response = await fetch(API);
-
-      if (!response.ok){
-        throw new Error("error");
-      }
-      const data = await response.json();
-      return data
-    }
-
-    renderLoginForm()
-
-  }, []);
-
 
   const submitLoginForm = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();

@@ -4,8 +4,28 @@ import { ArrowLeftIcon } from "lucide-react";
 import { Button } from "@/components/ui/button.tsx";
 import ToggleMode from '@/components/ToggleModeButton.tsx';
 import { Link } from 'react-router';
+import { useEffect } from 'react'
 
 export default function SignupPage() {
+
+  const API = "https://blog-api-backend-h85d.onrender.com/user/sign-up";
+
+  useEffect(() => {
+
+    const renderLoginForm = async () => {
+      const response = await fetch(API);
+
+      if (!response.ok){
+        throw new Error("error");
+      }
+      const data = await response.json();
+      return data
+    }
+
+    renderLoginForm()
+
+  }, []);
+
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
       <div className="flex flex-col gap-4 p-6 md:p-10">

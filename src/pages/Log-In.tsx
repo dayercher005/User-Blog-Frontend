@@ -3,8 +3,28 @@ import { Link } from 'react-router';
 import { Button } from '@/components/ui/button.tsx';
 import { ArrowLeftIcon } from "lucide-react";
 import ToggleMode from '@/components/ToggleModeButton.tsx';
+import { useEffect } from 'react';
 
 export default function LoginPage() {
+
+  const API = "https://blog-api-backend-h85d.onrender.com/user/log-in"
+
+  useEffect(() => {
+
+    const renderSignupForm = async () => {
+        const response = await fetch(API);
+
+        if (!response.ok){
+            throw new Error("error");
+        }
+
+        const data = await response.json();
+        return data
+    }
+
+    renderSignupForm();
+  }, [])
+
   return (
 
     <div>
